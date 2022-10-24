@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk compile_sdk_version
+
+    defaultConfig {
+        minSdk min_sdk_version
+        targetSdk target_sdk_version
+        versionCode version_code
+        versionName version_name
+    }
+
+    compileOptions {
+        sourceCompatibility java_version
+        targetCompatibility java_version
+    }
+}
+
+dependencies {
+    api project(path: ':net')
+
+    api "androidx.core:core-ktx:$core_ktx_version"
+    api "androidx.appcompat:appcompat:$appcompat_version"
+    api "com.google.android.material:material:$material_version"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    //Initializer初始化
+    api "androidx.startup:startup-runtime:$startup_version"
+
+    api "androidx.compose.ui:ui:$compose_version"
+    api "androidx.compose.material:material:$compose_version"
+    api "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    api "androidx.activity:activity-compose:$activity_compose_version"
+    api "androidx.navigation:navigation-compose:$navigation_version"
+
+    //刷新头
+    api "com.google.accompanist:accompanist-swiperefresh:$accompanist_pager"
+    //UI ProvideWindowInsets正确获取状态栏高度
+    api "com.google.accompanist:accompanist-insets-ui:$accompanist_pager"
+    //控制UI栏
+    api "com.google.accompanist:accompanist-systemuicontroller:$accompanist_pager"
+    //提供了分页布局支持,类似viewPager
+    api "com.google.accompanist:accompanist-pager:$accompanist_pager"
+
+    /**
+     * compose提供有viewModel等其他方便的函数
+     * 以下为Compose扩展库
+     */
+    api "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_compose_version"
+    //提供observeAsState等方法
+    api "androidx.compose.runtime:runtime-livedata:$compose_version"
+
+    //Coil 核心库
+    api "io.coil-kt:coil-compose:$coil_version"
+    //Coil 选择添加
+//    implementation("io.coil-kt:coil-gif:1.2.2")//支持GIF
+//    implementation("io.coil-kt:coil-svg:1.2.2")//支持SVG
+//    implementation("io.coil-kt:coil-video:1.2.2")//支持Video
+
+    //加载lottie动画
+    api "com.airbnb.android:lottie-compose:$lottie_version"
+
+    // MMKV
+    api "com.tencent:mmkv-static:$mmkv_version"
+
+    //room
+    api "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    api "androidx.room:room-ktx:$room_version"
+}
